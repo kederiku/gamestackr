@@ -5,17 +5,17 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a wire:navigate href="{{ localized_route('home') }}">
+                    <a wire:navigate href="{{ route('home') }}">
                         <x-application-mark class="block h-8 w-auto" />
                     </a>
                 </div>
                 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <!-- <x-nav-link href="{{ localized_route('home') }}" wire:navigate :active="request()->localizedRouteIs('home')">
+                    <!-- <x-nav-link href="{{ route('home') }}" wire:navigate :active="request()->routeIs('home')">
                         {{ __('layout.navigation.home') }}
                     </x-nav-link> -->
-                    <x-nav-link href="{{ localized_route('news') }}" wire:navigate :active="request()->localizedRouteIs('news')">
+                    <x-nav-link href="{{ route('news') }}" wire:navigate :active="request()->routeIs('news')">
                         {{ __('layout.navigation.news') }}
                     </x-nav-link>
                 </div>
@@ -98,7 +98,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ localized_route('news') }}" wire:navigate :active="request()->localizedRouteIs('news')">
+            <x-responsive-nav-link href="{{ route('news') }}" wire:navigate :active="request()->routeIs('news')">
                 {{ __('layout.navigation.news') }}
             </x-responsive-nav-link>
         </div>

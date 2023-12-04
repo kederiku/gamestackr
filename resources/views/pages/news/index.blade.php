@@ -1,12 +1,14 @@
 <x-app-layout>
     <x-slot name="seo">
         @php
-            $locales = Config::get('locales.supported');
+            $locales = Config::get('localized-routes.supported_locales');
         @endphp
         
-        <link rel="canonical" href={{ localized_route('news')}}>
+        <link rel="canonical" href={{ route('news')}}>
         @for ($i = 0; $i < count($locales); $i++)
-            <link rel="alternate" hreflang="{{ $locales[$i] }}" href={{ localized_route('news', [], $locales[$i]) }} />
+        <link rel="alternate" 
+            hreflang="{{ strtolower(str_replace('_', '-', $locales[$i])) }}" 
+            href={{ route('news', [], true, $locales[$i]) }} />
         @endfor
         {{--
         <meta name="description" content="{{ __('news.description') }}">

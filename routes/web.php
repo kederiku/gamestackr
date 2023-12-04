@@ -22,10 +22,11 @@ Route::get('language/{locale}', function ($locale) {
     return redirect()->route(app()->getLocale().'.home');
 })->name("language");
 
-Route::multilingual('/', HomeController::class)->name('home');
-Route::multilingual('/news', [NewsController::class, 'index'])->name('news');
-
-Route::multilingual('/choose-country', LocaleController::class)->name('choose-country');
+Route::localized(function () {
+    Route::get(Lang::uri('/'), HomeController::class)->name('home');
+    Route::get(Lang::uri('/news'), [NewsController::class, 'index'])->name('news');
+    Route::get(Lang::uri('/choose-country'), LocaleController::class)->name('choose-country');
+});
 
 Route::middleware([
     'auth:sanctum',
@@ -37,3 +38,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');*/
 });
+
+
+Route::fallback(\CodeZero\LocalizedRoutes\Controllers\FallbackController::class);
