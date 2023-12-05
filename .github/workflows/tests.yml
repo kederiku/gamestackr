@@ -31,14 +31,14 @@ jobs:
       - name: Copy .env file
         run: |
           cp .env.example .env
-      
-      - name: Generate key
-        run: |
-          php artisan key:generate
 
       - name: Run composer
         run: |
           composer install --no-interaction
+			
+			- name: Generate key
+        run: |
+          php artisan key:generate
 
       - name: Run test suite
         run: |
