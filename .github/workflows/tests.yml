@@ -35,7 +35,7 @@ jobs:
 
       - name: Run composer
         run: |
-          composer install --no-interaction
+          composer install --no-interaction --no-progress --no-suggest --prefer-dist --optimize-autoloader --no-scripts
 
       - name: Run test suite
         run: |
