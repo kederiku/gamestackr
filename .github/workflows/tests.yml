@@ -30,7 +30,7 @@ jobs:
 
       - name: Copy .env file
         run: |
-          cp .env.exemple .env
+          cp .env.example .env
       
       - name: Generate key
         run: |
