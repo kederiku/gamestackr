@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
                 return $locale->alpha2;
             })->toArray();
         });*/
-        $languages = ['en', 'fr', 'es']
+        $languages = ['en', 'fr', 'es'];
         config(['locales.languages' => $languages]);
     }
 }
