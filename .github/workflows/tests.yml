@@ -12,6 +12,17 @@ jobs:
   tests:
     name: Run tests
     runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: cicd_testing
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
       - uses: actions/checkout@v2
 
@@ -28,31 +39,17 @@ jobs:
         with:
           php-version: 8.2
 
-      - name: Copy .env file
-        run: |
-          cp .env.ci .env
-          cp .env.ci .env.testing
+      - name: Install composer dependencies
+        run: composer install --no-scripts
 
-      - name: Run composer
-        run: |
-          composer install --no-interaction --no-progress --no-suggest --prefer-dist --optimize-autoloader --no-scripts
+      - name: Prepare Laravel Application
+        run: cp .env.ci .env
 
-      - name: Generate database
-        run: |
-          php artisan migrate --seed
+      - name: Install NPM dependencies
+        run: npm install
+
+      - name: Compile assets
+        run: npm run build
 
       - name: Run test suite
-        run: |
-          php artisan test
-        env:
-          DB_DATABASE: cicd_testing
-
-    services:
-      mysql:
-        image: mysql:8.0
-        env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_DATABASE: cicd_testing
-        ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=5s --health-retries=3
+        run: php artisan test

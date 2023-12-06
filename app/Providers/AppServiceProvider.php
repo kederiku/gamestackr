@@ -22,11 +22,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        /*
         $languages = Cache::remember('language_list', now()->addDays(30), function () {
             return Language::select("alpha2")->get()->transform(function ($locale) {
                 return $locale->alpha2;
             })->toArray();
-        });
+        });*/
+        $languages = ['en', 'fr', 'es']
         config(['locales.languages' => $languages]);
     }
 }
