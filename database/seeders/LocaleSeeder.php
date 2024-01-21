@@ -45,6 +45,14 @@ class LocaleSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+        Locale::create([
+            'id' => 5,
+            'name' =>'ja_JP',
+            'language_id' => 4,
+            'country_id' => 5,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
        
     }
 }

@@ -10,6 +10,7 @@ return [
         'en_US',
         'es_ES',
         'fr_FR',
+        'ja_JP',
     ],
 
     /**

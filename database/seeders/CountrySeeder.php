@@ -53,6 +53,16 @@ class CountrySeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+        Country::create([
+            'id' => 5,
+            'alpha2' => 'JP',
+            'name' => 'Japan',
+            'name_locale' => '日本',
+            'flag' => 'countries/flag/JP.svg',
+            'region' => 'ASIA + PACIFIC',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
        
     }
 }

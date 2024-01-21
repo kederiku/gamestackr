@@ -15,4 +15,7 @@
             'title' => 'Noticias',
             'media_language' => 'Seleccionar idioma',
         ],
+        'games' => [
+            'title' => 'Juegos',
+        ],
     ];

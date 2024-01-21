@@ -4,6 +4,7 @@ return [
     'navigation' => [
         'home' => 'Home',
         'news' => 'News',
+        'games' => 'Games',
     ],
     'footer' => [
         'choose_country' => 'Country:',

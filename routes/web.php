@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\GameController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ Route::localized(function () {
     Route::get(Lang::uri('/'), HomeController::class)->name('home');
     Route::get(Lang::uri('/news'), [NewsController::class, 'index'])->name('news');
     Route::get(Lang::uri('/choose-country'), LocaleController::class)->name('choose-country');
+    Route::get(Lang::uri('/games'), [GameController::class, 'index'])->name('games');
 });
 
 Route::middleware([

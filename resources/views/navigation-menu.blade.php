@@ -15,8 +15,11 @@
                     <!-- <x-nav-link href="{{ route('home') }}" wire:navigate :active="request()->routeIs('home')">
                         {{ __('layout.navigation.home') }}
                     </x-nav-link> -->
-                    <x-nav-link href="{{ route('news') }}" wire:navigate :active="request()->routeIs('news')">
+                    <x-nav-link href="{{ route('news') }}" wire:navigate :active="Route::isLocalized('news')">
                         {{ __('layout.navigation.news') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('games') }}" wire:navigate :active="Route::isLocalized('games')">
+                        {{ __('layout.navigation.games') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -98,8 +101,11 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('news') }}" wire:navigate :active="request()->routeIs('news')">
+            <x-responsive-nav-link href="{{ route('news') }}" wire:navigate :active="Route::isLocalized('news')">
                 {{ __('layout.navigation.news') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('games') }}" wire:navigate :active="Route::isLocalized('games')">
+                {{ __('layout.navigation.games') }}
             </x-responsive-nav-link>
         </div>
 

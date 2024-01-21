@@ -37,6 +37,14 @@ class LanguageSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+        Language::create([
+            'id' => 4,
+            'alpha2' => 'ja',
+            'name' => 'Japanese',
+            'name_locale' => '日本語',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
        
     }
 }
