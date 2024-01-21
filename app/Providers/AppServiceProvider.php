@@ -6,6 +6,12 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Cache;
 use App\Models\Locale;
 use App\Models\Language;
+use Spatie\Translatable\Facades\Translatable;
+
+Translatable::fallback(
+    fallbackLocale: 'en_GB',
+    fallbackAny: true,
+);
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
                 return $locale->alpha2;
             })->toArray();
         });*/
-        $languages = ['en', 'fr', 'es'];
+        $languages = ['en', 'fr', 'es', 'ja'];
         config(['locales.languages' => $languages]);
     }
 }

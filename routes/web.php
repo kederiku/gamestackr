@@ -28,6 +28,7 @@ Route::localized(function () {
     Route::get(Lang::uri('/news'), [NewsController::class, 'index'])->name('news');
     Route::get(Lang::uri('/choose-country'), LocaleController::class)->name('choose-country');
     Route::get(Lang::uri('/games'), [GameController::class, 'index'])->name('games');
+    Route::get(Lang::uri('/games/{slug}/{id}'), [GameController::class, 'show'])->name('games.show');
 });
 
 Route::middleware([
